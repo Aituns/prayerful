@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prayerful/views/addrequestpage/addrequestpage.dart';
 
 import 'package:prayerful/views/homepage/utils/homepage_option.dart';
 import 'package:prayerful/views/prayerpage/ui/prayerpage.dart';
@@ -43,10 +44,22 @@ class _HomePageState extends State<HomePage> {
             mainAxisSpacing: 10,
             crossAxisCount: 2,
             children: const <Widget>[
-              HomepageOption(option: 'Your \nPrayers', page: PrayerPage()),
-              HomepageOption(option: 'Biblical \nPrayers', page: PrayerPage()),
-              HomepageOption(option: 'Puritan \nPrayers', page: PrayerPage()),
-              HomepageOption(option: 'Options', page: PrayerPage()),
+              HomepageOption(
+                option: 'Your \nPrayers',
+                page: PrayerPage(),
+              ),
+              HomepageOption(
+                option: 'Biblical \nPrayers',
+                page: AddRequestPage(),
+              ),
+              HomepageOption(
+                option: 'Puritan \nPrayers',
+                page: PrayerPage(),
+              ),
+              HomepageOption(
+                option: 'Options',
+                page: PrayerPage(),
+              ),
             ],
           ),
         ],

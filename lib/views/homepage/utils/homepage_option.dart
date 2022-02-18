@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/page_transition.dart';
+import 'package:prayerful/utils/page_transition.dart';
 
 class HomepageOption extends StatelessWidget {
   final String option;

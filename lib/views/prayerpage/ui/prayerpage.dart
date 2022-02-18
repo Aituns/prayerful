@@ -1,6 +1,9 @@
 //import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:prayerful/views/addrequestpage/addrequestpage.dart';
+
+import 'package:prayerful/utils/page_transition.dart';
 
 class PrayerPage extends StatefulWidget {
   const PrayerPage({Key? key}) : super(key: key);
@@ -16,9 +19,14 @@ class _PrayerPageState extends State<PrayerPage> {
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          FirebaseFirestore.instance
-              .collection('testing')
-              .add({'timestamp': Timestamp.fromDate(DateTime.now())});
+          Navigator.push(
+            context,
+            PageTransition(
+              alignment: Alignment.center,
+              type: PageTransitionType.rightToLeftWithFade,
+              child: const AddRequestPage(),
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),
@@ -34,10 +42,11 @@ class _PrayerPageState extends State<PrayerPage> {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (BuildContext context, int index) {
                     final docData = snapshot.data!.docs[index];
-                    final dateTime =
-                        (docData['timestamp'] as Timestamp).toDate();
+                    final name = (docData['Name'] as String);
+                    final request = (docData['Prayer'] as String);
                     return ListTile(
-                      title: Text(dateTime.toString()),
+                      title: Text(name.toString()),
+                      subtitle: Text(request.toString()),
                     );
                   },
                 )

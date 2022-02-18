@@ -15,6 +15,7 @@ class Light {
           )),
       fontFamily: 'SF-Pro-Display',
       iconTheme: const IconThemeData(color: Colors.white),
+      colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4F4949)),
     );
   }
 }
