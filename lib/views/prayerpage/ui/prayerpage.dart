@@ -1,5 +1,6 @@
 //import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:prayerful/views/addrequestpage/addrequestpage.dart';
 
@@ -13,6 +14,8 @@ class PrayerPage extends StatefulWidget {
 }
 
 class _PrayerPageState extends State<PrayerPage> {
+  final uid = FirebaseAuth.instance.currentUser!.uid.toString();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +34,7 @@ class _PrayerPageState extends State<PrayerPage> {
         child: const Icon(Icons.add),
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('testing').snapshots(),
+        stream: FirebaseFirestore.instance.collection(uid).snapshots(),
         builder: (
           BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot,

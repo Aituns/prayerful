@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prayerful/views/addrequestpage/addrequestpage.dart';
 
 import 'package:prayerful/views/homepage/utils/homepage_option.dart';
+import 'package:prayerful/views/optionspage/optionspage.dart';
 import 'package:prayerful/views/prayerpage/ui/prayerpage.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
               ),
               HomepageOption(
                 option: 'Options',
-                page: PrayerPage(),
+                page: OptionsPage(),
               ),
             ],
           ),
