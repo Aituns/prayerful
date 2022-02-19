@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class AddRequestPage extends StatefulWidget {
   const AddRequestPage({Key? key}) : super(key: key);
@@ -17,10 +16,6 @@ class _AddRequestPageState extends State<AddRequestPage> {
   final profileList = FirebaseFirestore.instance.collection('UserData');
 
   final GlobalKey<FormState> _formKey = GlobalKey();
-
-  Future _updateRequests(String uid, String request) async {
-    return await profileList.doc(uid).update({'Request': request});
-  }
 
   Widget _buildName() {
     return TextFormField(
