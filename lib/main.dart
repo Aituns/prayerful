@@ -18,7 +18,6 @@ Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const Prayerful());
 }

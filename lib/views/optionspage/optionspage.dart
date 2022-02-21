@@ -3,7 +3,9 @@ import 'package:prayerful/utils/authentication_service.dart';
 import 'package:provider/provider.dart';
 
 class OptionsPage extends StatelessWidget {
-  const OptionsPage({Key? key}) : super(key: key);
+  OptionsPage({Key? key}) : super(key: key);
+
+  late String name;
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +14,19 @@ class OptionsPage extends StatelessWidget {
       body: Center(
           child: Column(
         children: <Widget>[
-          ElevatedButton(
+          TextButton(
             onPressed: () {
               context.read<AuthenticationService>().signOut();
               Navigator.pop(context);
             },
-            child: const Text('Sign Out'),
+            child: const Text(
+              'Sign Out',
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontFamily: 'SF-Pro-Display',
+                fontSize: 18,
+              ),
+            ),
           ),
         ],
       )),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:prayerful/views/addrequestpage/addrequestpage.dart';
 
 import 'package:prayerful/views/homepage/utils/homepage_option.dart';
 import 'package:prayerful/views/optionspage/optionspage.dart';
@@ -16,53 +15,77 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData _mediaQueryData = MediaQuery.of(context);
+    double screenWidth = _mediaQueryData.size.width;
+    double blocksSizeHorizontal = screenWidth / 100;
+    double height = blocksSizeHorizontal * 35;
+    double width = blocksSizeHorizontal * 35;
+
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            child: SvgPicture.asset(
-              'assets/images/prayerful.svg',
-              height: 250,
-              width: 250,
-              color: const Color(0xFF4F4949),
-            ),
+          Column(
+            children: [
+              Container(
+                alignment: Alignment.center,
+                child: SvgPicture.asset(
+                  'assets/images/prayerful.svg',
+                  height: blocksSizeHorizontal * 55,
+                  width: blocksSizeHorizontal * 55,
+                  color: const Color(0xFF4F4949),
+                ),
+              ),
+            ],
           ),
           const Text(
             'Prayerful',
             style: TextStyle(
-              fontSize: 54,
+              fontSize: 36,
               fontWeight: FontWeight.w700,
               color: Color(0xFF4F4949),
             ),
           ),
-          GridView.count(
-            shrinkWrap: true,
-            primary: false,
-            padding: const EdgeInsets.all(35),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 2,
-            children: const <Widget>[
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
               HomepageOption(
-                option: 'Your \nPrayers',
-                page: PrayerPage(),
-              ),
+                  option: 'Prayers',
+                  page: const PrayerPage(),
+                  height: height,
+                  width: width,
+                  padding: 4),
               HomepageOption(
-                option: 'Biblical \nPrayers',
-                page: AddRequestPage(),
-              ),
-              HomepageOption(
-                option: 'Puritan \nPrayers',
-                page: PrayerPage(),
-              ),
-              HomepageOption(
-                option: 'Options',
-                page: OptionsPage(),
+                option: 'Biblical\nPrayers',
+                page: const PrayerPage(),
+                height: height,
+                width: width,
+                padding: 4,
               ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              HomepageOption(
+                  option: 'Puritans\nPrayers',
+                  page: const PrayerPage(),
+                  height: height,
+                  width: width,
+                  padding: 4),
+              HomepageOption(
+                  option: 'Options',
+                  page: OptionsPage(),
+                  height: height,
+                  width: width,
+                  padding: 4),
+            ],
+          ),
+          const Spacer(),
+          const Spacer(),
+          const Spacer(),
         ],
       ),
     );

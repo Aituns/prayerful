@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  app_uninstaller: ^0.4.1
   cloud_firestore: ^3.1.8
   cupertino_icons: ^1.0.2
   firebase_analytics: ^9.1.0
