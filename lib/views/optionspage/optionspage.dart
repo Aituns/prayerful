@@ -3,9 +3,7 @@ import 'package:prayerful/utils/authentication_service.dart';
 import 'package:provider/provider.dart';
 
 class OptionsPage extends StatelessWidget {
-  OptionsPage({Key? key}) : super(key: key);
-
-  late String name;
+  const OptionsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

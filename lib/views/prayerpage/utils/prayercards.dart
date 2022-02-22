@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:prayerful/utils/date_converter.dart';
+
+import 'package:prayerful/utils/globals.dart' as globals;
 
 class PrayerCard extends StatelessWidget {
   final String name;
   final String request;
   final Timestamp date;
 
-  PrayerCard({
+  const PrayerCard({
     Key? key,
     required this.date,
     required this.name,
     required this.request,
   }) : super(key: key);
 
-  DateConverter dc = DateConverter();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +29,7 @@ class PrayerCard extends StatelessWidget {
         ),
         child: ListTile(
           title: Text(
-            name.toString() + ": " + dc.toMDY(date.toDate()),
+            name.toString() + ": " + globals.dc.toMDY(date.toDate()),
             style: const TextStyle(
                 fontFamily: 'SF-Pro-Display',
                 fontSize: 18,

@@ -18,8 +18,8 @@ class _HomePageState extends State<HomePage> {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
     double screenWidth = _mediaQueryData.size.width;
     double blocksSizeHorizontal = screenWidth / 100;
-    double height = blocksSizeHorizontal * 35;
-    double width = blocksSizeHorizontal * 35;
+    double height = blocksSizeHorizontal * 40;
+    double width = blocksSizeHorizontal * 40;
 
     return Scaffold(
       appBar: AppBar(),
@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.center,
                 child: SvgPicture.asset(
                   'assets/images/prayerful.svg',
-                  height: blocksSizeHorizontal * 55,
-                  width: blocksSizeHorizontal * 55,
+                  height: blocksSizeHorizontal * 65,
+                  width: blocksSizeHorizontal * 65,
                   color: const Color(0xFF4F4949),
                 ),
               ),
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                   padding: 4),
               HomepageOption(
                   option: 'Options',
-                  page: OptionsPage(),
+                  page: const OptionsPage(),
                   height: height,
                   width: width,
                   padding: 4),

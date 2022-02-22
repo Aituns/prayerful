@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:prayerful/utils/globals.dart' as globals;
 
 class AddRequestPage extends StatefulWidget {
   const AddRequestPage({Key? key}) : super(key: key);
@@ -12,8 +13,10 @@ class AddRequestPage extends StatefulWidget {
 class _AddRequestPageState extends State<AddRequestPage> {
   late String _name;
   late String _prayerRequest;
-  final uid = FirebaseAuth.instance.currentUser!.uid.toString();
+  late String _tags;
   final profileList = FirebaseFirestore.instance.collection('UserData');
+
+  List<Map<String, dynamic>> request = [];
 
   final GlobalKey<FormState> _formKey = GlobalKey();
 
@@ -47,6 +50,21 @@ class _AddRequestPageState extends State<AddRequestPage> {
     );
   }
 
+  Widget _buildTags() {
+    return TextFormField(
+      decoration: const InputDecoration(labelText: 'Tags (Seperated by Comma)'),
+      validator: (String? value) {
+        if (value.toString().isEmpty) {
+          return 'Required';
+        }
+        return null;
+      },
+      onSaved: (String? value) {
+        _tags = value.toString();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +78,7 @@ class _AddRequestPageState extends State<AddRequestPage> {
             children: <Widget>[
               _buildName(),
               _buildPrayer(),
+              _buildTags(),
               const SizedBox(height: 100),
               ElevatedButton(
                 onPressed: () {
@@ -69,10 +88,11 @@ class _AddRequestPageState extends State<AddRequestPage> {
 
                   _formKey.currentState!.save();
 
-                  FirebaseFirestore.instance.collection(uid).add({
-                    'Name': _name,
-                    'Prayer': _prayerRequest,
-                    'Date': DateTime.now(),
+                  FirebaseFirestore.instance.collection(globals.uid).add({
+                    'name': _name,
+                    'request': _prayerRequest,
+                    'date': DateTime.now(),
+                    'tags': _tags.split(',')
                   });
 
                   Navigator.pop(context);
