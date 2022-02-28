@@ -13,13 +13,18 @@ class Categories extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection(globals.uid).snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection(globals.uid)
+            //.where('tags'[0], arrayContains: 'test')
+            .orderBy('date', descending: true)
+            .snapshots(),
         builder: (
           BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot,
         ) {
           return snapshot.hasData
               ? ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemCount: snapshot.data!.docs.length,
@@ -42,7 +47,7 @@ class Categories extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              ' ' + tags.toString() + ' ',
+                              ' ' + tags[i] + ' ',
                               style: const TextStyle(
                                 fontSize: 20,
                               ),
@@ -54,7 +59,7 @@ class Categories extends StatelessWidget {
                     });
                   },
                 )
-              : const Center(child: CircularProgressIndicator());
+              : const Center(child: Text('asdf'));
         },
       ),
     );

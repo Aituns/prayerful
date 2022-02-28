@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prayerful/views/homepage/utils/homepage_option.dart';
 import 'package:prayerful/views/optionspage/optionspage.dart';
 import 'package:prayerful/views/prayerpage/ui/prayerpage.dart';
+import 'package:prayerful/views/purtianprayerpage/puritaanprayerpage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               HomepageOption(
                   option: 'Puritans\nPrayers',
-                  page: const PrayerPage(),
+                  page: const PuritanPrayerPage(),
                   height: height,
                   width: width,
                   padding: 4),
