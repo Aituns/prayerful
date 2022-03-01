@@ -72,7 +72,8 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               HomepageOption(
                   option: 'Puritans\nPrayers',
-                  page: const PuritanPrayerPage(),
+                  //page: const PuritanPrayerPage(),
+                  page: const PrayerPage(),
                   height: height,
                   width: width,
                   padding: 4),
