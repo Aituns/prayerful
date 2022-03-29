@@ -35,7 +35,7 @@ class _PrayerPageState extends State<PrayerPage> {
       ),
       body: Column(
         children: const <Widget>[
-          Categories(),
+          // /Categories(),
           PrayerList(),
         ],
       ),
